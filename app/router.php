@@ -19,4 +19,19 @@
    *
    */
 
+
+  Router::route('GET', '/', 'home#login');
+  Router::route('GET', '/fox', 'home#fox');
+
+  Router::route_before('GET', '/', 'home#redirect');
+  Router::route_before('GET', '/fox', 'home#redirect');
+
+
+  Router::route('POST', '/user/login', 'user#login');
+  Router::route('POST', '/user/logout', 'user#logout');
+
+
+  Router::route('GET', '/data/wishlist', 'data#wishlist');
+  Router::route('GET', '/data/giveaway', 'data#giveaway');
+  Router::route('GET', '/data/giveaways', 'data#giveaways');
 ?>

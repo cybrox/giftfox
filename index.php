@@ -10,7 +10,7 @@
 
   /* Allow user to switch app dir */
   define("APPDIR", "app");
-  define("SUBDIR", "/imagesave");
+  define("SUBDIR", "/git/giftfox/");
 
 
   /* Require needed fiels */
