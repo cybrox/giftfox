@@ -48,15 +48,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6"><span class="fox-title">Auto-Join Promoted</span></div>
-            <div class="col-xs-6">
-                <div class="fancyCheckbox">
-                    <input type="checkbox" id="gfSet_promoted" class="mod-checkbox" name="">
-                    <label for="gfSet_promoted"></label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-xs-6"><span class="fox-title">Auto-Join Random</span></div>
             <div class="col-xs-6">
                 <div class="fancyCheckbox">
