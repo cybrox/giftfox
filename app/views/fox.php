@@ -1,5 +1,20 @@
 <script type="text/javascript">
 
+    var App = blocks.Application();
+
+    var logout = function() {
+        $.ajax({
+            method: "POST",
+            url: "user/logout/",
+
+            success: function (payload) {
+                if (payload.success == true) {
+                    window.location = './';
+                }
+            }
+        });
+    }
+
 </script>
 
 <div class="fox-interface">
@@ -26,6 +41,6 @@
     </div>
 
     <div class="fox-footer">
-        <a href="#">Logout</a>
+        <a data-query="click(logout)">Logout</a>
     </div>
 </div>

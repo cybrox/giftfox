@@ -29,7 +29,10 @@
             if (Session::has('sess')) {
                 Session::drop('sess');
                 Session::drop('user');
-                Router::redirect('/');
+
+                View::render_json(array("success" => true));
+            } else {
+                View::render_json(array("success" => false));
             }
         }
 
