@@ -161,6 +161,8 @@ header {
 
         .fox-waiting {
             padding-top: 15px;
+            font-family: Tahoma, Arial;
+            font-size: 0.7em;
         }
 
     .fox-footer {

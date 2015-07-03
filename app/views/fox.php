@@ -88,13 +88,11 @@
                 <?php echo date("d.m h:i:s", Registry::get('lastjoin')); ?>
             </span></div>
         </div>
-        <!--
-            <div class="row justify fox-waiting">
-                <div class="col-xs-12">
-                    Waiting for: <?php __('userjoin'); ?>
-                </div>
+        <div class="row justify fox-waiting">
+            <div class="col-xs-12">
+                Waiting for: <?php __('userjoin'); ?>
             </div>
-        -->
+        </div>
     </div>
 
     <div class="fox-footer">
