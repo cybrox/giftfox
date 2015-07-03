@@ -135,6 +135,23 @@ header {
             font-weight: normal;
         }
 
+    .fox-main {
+        padding: 0 13%;
+    }
+
+        .fox-main > .row {
+            margin: 20px 0;
+        }
+
+        .fox-main > .row > .col-xs-6:last-of-type {
+            text-align: right;
+        }
+
+        .fox-title {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
     .fox-footer {
         padding: 15px 15%;
         text-align: right;
