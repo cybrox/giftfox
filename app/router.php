@@ -31,6 +31,7 @@
 
   Router::route('POST', '/user/login', 'user#login');
   Router::route('POST', '/user/logout', 'user#logout');
+  Router::route('POST', '/user/updatekey', 'user#newkey');
 
 
   Router::route('GET', '/data/wishlist', 'data#wishlist');

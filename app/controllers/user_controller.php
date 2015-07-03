@@ -33,6 +33,23 @@
             }
         }
 
+
+        public function newkey() {
+            if (Session::has('sess')) {
+                $sessionid = (Parameters::has('sesskey')) ? Parameters::get('sesskey') : '';
+                $user = User::where(array(array("token", "=", Session::get('sess'))));
+
+                $user->update(array(
+                    "sessionid" => $sessionid
+                ));
+
+                Session::set('phps', $sessionid);
+                View::render_json(array("success" => true));
+            } else {
+                View::render_json(array("success" => false));
+            }
+        }
+
     }
 
 ?>

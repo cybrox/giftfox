@@ -62,6 +62,7 @@ header {
     padding: 0;
 }
 
+    .key-input,
     .login-input {
         font-size: 1.3em;
         font-family: SkarpaLt, Tahoma, Arial;
@@ -78,7 +79,7 @@ header {
         outline: none;
     }
 
-    .login-error {
+    .form-error {
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 0.2em;
@@ -108,3 +109,10 @@ footer {
 
 
 .hidden { display: none; }
+
+.info-message {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ccc;
+}

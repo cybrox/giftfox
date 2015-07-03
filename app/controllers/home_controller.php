@@ -22,6 +22,8 @@
 
             if (strlen($page) == 0) {
                 Router::redirect('./key');
+            } else {
+                View::render('fox');
             }
         }
 

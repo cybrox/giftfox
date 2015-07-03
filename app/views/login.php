@@ -21,7 +21,7 @@
                     if (payload.success == true) {
                         window.location = 'fox';
                     } else {
-                        $('.login-error').removeClass('hidden');
+                        $('.form-error').removeClass('hidden');
                     }
                 }
             });
@@ -32,5 +32,5 @@
 <div class="login-form">
     <input class="login-input" type="text" placeholder="username" data-query="val(username).keyup(login)" />
     <input class="login-input" type="password" placeholder="password" data-query="val(password).keyup(login)" />
-    <p class="login-error hidden">Login failed!</p>
+    <p class="form-error hidden">Login failed!</p>
 </div>
