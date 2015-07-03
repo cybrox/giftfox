@@ -28,7 +28,7 @@ a {
 
 body {
     background: #222;
-    font-family: 'Sequi', Arial;
+    font-family: SkarpaLt, Tahoma, Arial;
 }
 
 
@@ -62,21 +62,28 @@ header {
     padding: 0;
 }
 
-.login-input {
-    font-size: 1.3em;
-    font-family: SkarpaLt, Tahoma, Arial;
-    font-weight: bold;
-    letter-spacing: 0.12em;
-    width: 64%;
-    padding: 15px 2%;
-    margin: 10px 18%;
-    display: inline-block;
-    background: #1d1d1d;
-    color: #ccc;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-}
+    .login-input {
+        font-size: 1.3em;
+        font-family: SkarpaLt, Tahoma, Arial;
+        font-weight: bold;
+        letter-spacing: 0.12em;
+        width: 64%;
+        padding: 15px 2%;
+        margin: 10px 18%;
+        display: inline-block;
+        background: #1d1d1d;
+        color: #ccc;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .login-error {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #ee3b3b;
+    }
 
 
 

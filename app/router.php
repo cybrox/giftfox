@@ -23,8 +23,8 @@
   Router::route('GET', '/', 'home#login');
   Router::route('GET', '/fox', 'home#fox');
 
-  Router::route_before('GET', '/', function(){ if (Session::has('user')) Router::redirect('./fox'); });
-  Router::route_before('GET', '/fox', function(){ if (!Session::has('user')) Router::redirect('./'); });
+  Router::route_before('GET', '/', function(){ if (Session::has('sess')) Router::redirect('./fox'); });
+  Router::route_before('GET', '/fox', function(){ if (!Session::has('sess')) Router::redirect('./'); });
 
 
   Router::route('POST', '/user/login', 'user#login');
