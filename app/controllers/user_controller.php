@@ -21,6 +21,15 @@
             }
         }
 
+
+        public function logout() {
+            if (Session::has('sess')) {
+                Session::drop('sess');
+                Session::drop('user');
+                Router::redirect('/');
+            }
+        }
+
     }
 
 ?>
