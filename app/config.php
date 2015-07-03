@@ -20,15 +20,15 @@
     // to a MySQL database. To prevent errors if you're not using the
     // database, set `use_db` to false.
     'database' => array(
-      'use_db' => false,
+      'use_db' => true,
       'driver' => 'mysql',
       'hostname' => 'localhost',
       'port' => 3306,
       'username' => 'root',
       'password' => '',
-      'database' => 'sloth-php',
+      'database' => 'giftfox',
       'charset' => 'utf8',
-      'prefix' => ''
+      'prefix' => 'gd_'
     ),
 
 
