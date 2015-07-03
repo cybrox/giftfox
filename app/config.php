@@ -28,7 +28,7 @@
       'password' => '',
       'database' => 'giftfox',
       'charset' => 'utf8',
-      'prefix' => 'gd_'
+      'prefix' => 'gf_'
     ),
 
 
