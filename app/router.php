@@ -22,9 +22,11 @@
 
   Router::route('GET', '/', 'home#login');
   Router::route('GET', '/fox', 'home#fox');
+  Router::route('GET', '/key', 'home#key');
 
   Router::route_before('GET', '/', function(){ if (Session::has('sess')) Router::redirect('./fox'); });
   Router::route_before('GET', '/fox', function(){ if (!Session::has('sess')) Router::redirect('./'); });
+  Router::route_before('GET', '/key', function(){ if (!Session::has('sess')) Router::redirect('./'); });
 
 
   Router::route('POST', '/user/login', 'user#login');

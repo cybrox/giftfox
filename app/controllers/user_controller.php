@@ -12,8 +12,11 @@
             ));
 
             if ($user->count() == 1) {
+                $usermeta = $user->fetch();
+
                 Session::set('user', $username);
-                Session::set('sess', $user->fetch()->token);
+                Session::set('sess', $usermeta->token);
+                Session::set('phps', $usermeta->sessionid);
 
                 View::render_json(array("success" => true));
             } else {
