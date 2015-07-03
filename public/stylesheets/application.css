@@ -28,8 +28,8 @@ a {
 }
 
 a:hover {
+    color: #E07204 !important;
     cursor: pointer;
-    text-decoration: underline;
 }
 
 body {
@@ -51,6 +51,13 @@ header {
         font-weight: bold;
         font-size: 7em;
         color: #ccc;
+    }
+
+    .page-logo .page-logo-nrm,
+    .page-logo a:hover,
+    .page-logo a:hover .page-logo-nrm {
+        color: #ccc;
+        text-decoration: none;
     }
 
     .page-logo .page-logo-fox {
@@ -109,11 +116,12 @@ header {
             height: 30px;
             border: 1px solid #1a1a1a;
             border-radius: 3px;
-            margin-bottom: -10px;
+            margin-top: -5px;
         }
 
         .fox-user-name {
-            font-size: 1.5em;
+            font-size: 2em;
+            font-weight: bold;
         }
 
     .fox-bull {
@@ -149,13 +157,47 @@ header {
 
         .fox-title {
             font-size: 1.6em;
-            font-weight: bold;
+        }
+
+        .fox-waiting {
+            padding-top: 15px;
         }
 
     .fox-footer {
         padding: 15px 15%;
         text-align: right;
     }
+
+        .fox-logout {
+            color: #ccc;
+            padding: 4px 9px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 3px;
+            border-top: 0px solid #343434;
+            border-left: 0px solid #343434;
+            border-right: 1px solid #343434;
+            border-bottom: 1px solid #343434;
+        }
+
+        .fox-logout:hover {
+            color: #ccc !important;
+            text-decoration: none !important;
+            border-top: 1px solid #343434;
+            border-left: 1px solid #343434;
+            border-right: 0px solid #343434;
+            border-bottom: 0px solid #343434;
+        }
+
+        .new-won {
+            float: left;
+        }
+
+        .new-won-count,
+        a:hover .new-won-count {
+            font-size: 1.2em;
+            color: #ee3b3b;
+        }
 
 
 
@@ -181,6 +223,7 @@ footer {
 
 .hidden { display: none; }
 .clearfix { clear: both; }
+.justify { text-align: justify; }
 
 .info-message {
     text-align: center;

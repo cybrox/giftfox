@@ -10,8 +10,10 @@
 
     <header>
         <h1 class="page-logo">
-            <span>GIFT</span>
-            <span class="page-logo-fox">FOX</span>
+            <a href="./">
+                <span class="page-logo-nrm">GIFT</span>
+                <span class="page-logo-fox">FOX</span>
+            </a>
         </h1>
     </header>
 
