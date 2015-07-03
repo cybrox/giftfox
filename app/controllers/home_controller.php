@@ -28,6 +28,20 @@
                 preg_match("/<a class=\"nav__button nav__button--is-dropdown\" href=\"\/account\">Account \(<span class=\"nav__points\">([0-9]+)<\/span>P \/ <span title=\"[0-9_\.]+\">Level ([0-9]{1,2})<\/span>\)/si", $page, $userdata);
                 preg_match_all("/<a class\=\"table__column__heading\" href\=\"\/giveaway\/[A-z0-9]+\/[A-z0-9-]+\">[^<]+<\/a>/si", $page, $wishlist);
 
+                $user = User::where(array(
+                    array("token", "=", Session::get('sess'))
+                ));
+
+                $usermeta = $user->fetch();
+                Registry::set('lastjoin', Session::get('sess'));
+                Session::set('last', $usermeta->lastjoin);
+                Session::set('s_wi', ($usermeta->autowish == 1));
+                Session::set('s_ra', ($usermeta->autorand == 1));
+
+                Registry::set('s_wi', Session::get('s_wi'));
+                Registry::set('s_ra', Session::get('s_ra'));
+                Registry::set('lastjoin', $usermeta->lastjoin);
+
                 Registry::set('username', $username[1]);
                 Registry::set('useravtr', $useravtr[1]);
                 Registry::set('userpnts', $userdata[1]);

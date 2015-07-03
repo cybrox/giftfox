@@ -1,6 +1,12 @@
 <script type="text/javascript">
 
-    var App = blocks.Application();
+    var _autowish = blocks.observable(<?php __('s_wi'); ?>).on('change', function(x){ change('autowish', x); });
+    var _autorand = blocks.observable(<?php __('s_ra'); ?>).on('change', function(x){ change('autorand', x); });
+
+    blocks.query({
+        autowish: _autowish,
+        autorand: _autorand
+    });
 
     var logout = function() {
         $.ajax({
@@ -10,6 +16,26 @@
             success: function (payload) {
                 if (payload.success == true) {
                     window.location = './';
+                }
+            }
+        });
+    }
+
+    var change = function(param, value) {
+        var frval = (value) ? 1 : 0;
+
+        $.ajax({
+            method: "POST",
+            url: "user/updateval/",
+            data: {
+                'param': param,
+                'value': frval
+            },
+
+
+            success: function (payload) {
+                if (payload.success == false) {
+                    alert('Shit happened!');
                 }
             }
         });
@@ -42,7 +68,7 @@
             <div class="col-xs-6"><span class="fox-title">Auto-Join Wishlist</span></div>
             <div class="col-xs-6">
                 <div class="fancyCheckbox">
-                    <input type="checkbox" id="gfSet_wishlist" class="mod-checkbox" name="">
+                    <input type="checkbox" id="gfSet_wishlist" class="mod-checkbox" data-query="checked(autowish)">
                     <label for="gfSet_wishlist"></label>
                 </div>
             </div>
@@ -51,14 +77,16 @@
             <div class="col-xs-6"><span class="fox-title">Auto-Join Random</span></div>
             <div class="col-xs-6">
                 <div class="fancyCheckbox">
-                    <input type="checkbox" id="gfSet_random" class="mod-checkbox" name="">
+                    <input type="checkbox" id="gfSet_random" class="mod-checkbox" data-query="checked(autorand)">
                     <label for="gfSet_random"></label>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6"><span class="fox-title">Last Auto-Join</span></div>
-            <div class="col-xs-6"><span class="fox-title">0</span></div>
+            <div class="col-xs-6"><span class="fox-title">
+                <?php echo date("d.m h:i:s", Registry::get('lastjoin')); ?>
+            </span></div>
         </div>
         <!--
             <div class="row justify fox-waiting">

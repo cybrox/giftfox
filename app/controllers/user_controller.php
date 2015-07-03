@@ -17,6 +17,9 @@
                 Session::set('user', $username);
                 Session::set('sess', $usermeta->token);
                 Session::set('phps', $usermeta->sessionid);
+                Session::set('last', $usermeta->lastjoin);
+                Session::set('s_wi', ($usermeta->autowish == 1));
+                Session::set('s_ra', ($usermeta->autorand == 1));
 
                 View::render_json(array("success" => true));
             } else {
@@ -29,6 +32,9 @@
             if (Session::has('sess')) {
                 Session::drop('sess');
                 Session::drop('user');
+                Session::drop('last');
+                Session::drop('s_wi');
+                Session::drop('s_ra');
 
                 View::render_json(array("success" => true));
             } else {
@@ -53,6 +59,26 @@
             }
         }
 
+
+        public function setting() {
+            if (Session::has('sess')) {
+                $param = (Parameters::has('param')) ? Parameters::get('param') : '';
+                $value = (Parameters::has('value')) ? Parameters::get('value') : '';
+                $user = User::where(array(array("token", "=", Session::get('sess'))));
+
+                if (in_array($param, array('autowish', 'autorand'))) {
+                    $user->update(array(
+                        $param => $value
+                    ));
+
+                    Session::set($param, $value);
+                }
+
+                View::render_json(array("success" => true));
+            } else {
+                View::render_json(array("success" => false));
+            }
+        }
     }
 
 ?>
