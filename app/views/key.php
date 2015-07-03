@@ -31,6 +31,19 @@
             });
         }
     }
+
+    var logout = function() {
+        $.ajax({
+            method: "POST",
+            url: "user/logout/",
+
+            success: function (payload) {
+                if (payload.success == true) {
+                    window.location = './';
+                }
+            }
+        });
+    }
 </script>
 
 <div class="key-form">
@@ -38,4 +51,8 @@
     <input class="key-input" type="text" placeholder="sessionkey" data-query="val(sesskey).keyup(savekey)" />
     <p class="form-error form-error1 hidden">Something failed!</p>
     <p class="form-error form-error2 hidden">Key too short!</p>
+
+    <div class="fox-footer">
+        <a class="fox-logout" data-query="click(logout)">Logout</a>
+    </div>
 </div>
