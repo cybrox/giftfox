@@ -23,6 +23,17 @@
             if (strlen($page) == 0) {
                 Router::redirect('./key');
             } else {
+                preg_match("/a href\=\"\/user\/([A-z0-9_]+)\" class\=\"/si", $page, $username);
+                preg_match("/<div class=\"nav__avatar-inner-wrap\" style\=\"background-image:url\(https\:\/\/steamcdn\-a\.akamaihd\.net\/steamcommunity\/public\/images\/avatars\/([A-z0-9]+\/[A-z0-9]+)_medium.jpg\);\">/si", $page, $useravtr);
+                preg_match("/<a class=\"nav__button nav__button--is-dropdown\" href=\"\/account\">Account \(<span class=\"nav__points\">([0-9]+)<\/span>P \/ <span title=\"[0-9_\.]+\">Level ([0-9]{1,2})<\/span>\)/si", $page, $userdata);
+                preg_match_all("/<h2 class\=\"giveaway__heading\"\>/si", $page, $wishlist);
+
+                Registry::set('username', $username[1]);
+                Registry::set('useravtr', $useravtr[1]);
+                Registry::set('userpnts', $userdata[1]);
+                Registry::set('userlvls', $userdata[2]);
+                Registry::set('userwish', count($wishlist[0]) - 41);
+
                 View::render('fox');
             }
         }

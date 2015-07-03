@@ -23,10 +23,16 @@
 
 
 a {
-  color: #E07204;
+    color: #E07204;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 body {
+    color: #ccc;
     background: #222;
     font-family: SkarpaLt, Tahoma, Arial;
 }
@@ -58,7 +64,7 @@ header {
 #wrapper {
     width: 50%;
     height: auto;
-    margin: 40px 25%;
+    margin: 40px 25% 15px 25%;
     padding: 0;
 }
 
@@ -86,11 +92,58 @@ header {
         color: #ee3b3b;
     }
 
+    .fox-header {
+        padding: 0 15% 10px 15%;
+    }
+
+    .fox-user-info,
+    .fox-user-data {
+        width: 50%;
+        float: left;
+        line-height: 40px;
+    }
+
+        .fox-user-avatar {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #1a1a1a;
+            border-radius: 3px;
+            margin-bottom: -10px;
+        }
+
+        .fox-user-name {
+            font-size: 1.5em;
+        }
+
+    .fox-bull {
+        color: #444;
+        margin: 0 8px;
+        display: inline-block;
+    }
+
+    .fox-user-data {
+        font-size: 1.3em;
+        line-height: 40px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+        .fox-user-points-desc,
+        .fox-user-level-desc {
+            font-size: 0.6em;
+            font-weight: normal;
+        }
+
+    .fox-footer {
+        padding: 15px 15%;
+        text-align: right;
+    }
+
 
 
 
 footer {
-    margin: 50px 25%;
+    margin: 25px 25%;
 }
 
     .page-info {
@@ -109,6 +162,7 @@ footer {
 
 
 .hidden { display: none; }
+.clearfix { clear: both; }
 
 .info-message {
     text-align: center;
