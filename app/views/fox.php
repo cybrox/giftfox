@@ -69,11 +69,13 @@
             <div class="col-xs-6"><span class="fox-title">Last Auto-Join</span></div>
             <div class="col-xs-6"><span class="fox-title">0</span></div>
         </div>
-        <div class="row justify fox-waiting">
-            <div class="col-xs-12">
-                Waiting for: <?php __('userjoin'); ?>
+        <!--
+            <div class="row justify fox-waiting">
+                <div class="col-xs-12">
+                    Waiting for: <?php __('userjoin'); ?>
+                </div>
             </div>
-        </div>
+        -->
     </div>
 
     <div class="fox-footer">
