@@ -1,0 +1,72 @@
+.fancyCheckbox {
+  width: 120px;
+  height: 40px;
+  background: #333;
+  border-radius: 50px;
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.fancyCheckbox input {
+  display: none;
+}
+
+.fancyCheckbox:before {
+  content: 'On';
+  position: absolute;
+  top: 12px;
+  left: 13px;
+  height: 2px;
+  color: #E07204;
+  font-size: 16px;
+}
+
+.fancyCheckbox:after {
+  content: 'Off';
+  position: absolute;
+  top: 12px;
+  left: 84px;
+  height: 2px;
+  color: #ccc;
+  font-size: 16px;
+}
+
+.fancyCheckbox label {
+  display: block;
+  width: 52px;
+  height: 22px;
+  border-radius: 50px;
+
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 9px;
+  z-index: 1;
+  left: 12px;
+  background: #ddd;
+}
+
+.fancyCheckbox input[type=checkbox]:checked + label {
+  left: 60px;
+  background: #E07204;
+}
+
+.fancyBoxText {
+  padding-left: 20px;
+  line-height: 40px;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: #ccc;
+}
+
+  .fancyBoxText strong {
+    font-weight: normal;
+    font-size: 0.5em;
+    color: #bbb;
+  }
