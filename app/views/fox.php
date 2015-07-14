@@ -99,7 +99,7 @@
         <a class="fox-logout" data-query="click(logout)">Logout</a>
         <div class="new-won">
             <a href="http://www.steamgifts.com/giveaways/won" target="_blank">
-                <span class="new-won-count">0</span>
+                <span class="new-won-count"><?php __('numwon'); ?></span>
             </a>
             <span>New gifts won!</span>
         </div>
