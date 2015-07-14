@@ -10,7 +10,7 @@
 
   /* Allow user to switch app dir */
   define("APPDIR", "app");
-  define("SUBDIR", "/git/giftfox/");
+  define("SUBDIR", "giftfox/");
 
 
   /* Require needed fiels */
