@@ -1,2 +1,5 @@
 # Ignore example files
 cron/static/example*
+
+# Ignore generated log file
+cron/execute.log
