@@ -42,7 +42,7 @@
       $this->data = curl_exec ($c);
 
       curl_close ($c);
-      session_start();
+      @session_start();
       
       echo "[L] Requested page (".$this->link.")\r\n";
       return $this->data;

@@ -1,18 +1,18 @@
 <?php
 
   // request required files
-  require_once('./src/Core.class.php');
-  require_once('./src/User.class.php');
-  require_once('./src/Page.class.php');
+  include('/volume1/web/giftfox/cron/src/Core.class.php');
+  include('/volume1/web/giftfox/cron/src/User.class.php');
+  include('/volume1/web/giftfox/cron/src/Page.class.php');
 
-  require_once('../app/config.php');
+  include('/volume1/web/giftfox/app/config.php');
 
 
   // prepare global script variables
   $user_list = array();
   $user_self = NULL;
   $user_page = NULL;
-  session_start();
+  @session_start();
 
 
   // connect to mysql database

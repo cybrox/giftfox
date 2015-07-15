@@ -67,9 +67,11 @@
 
         // Find giveaways on page
         $giveaways = $page->findGiveaways();
+        echo "FOINDSHIT\r\n";
 
         // Loop over giveaways
         foreach ($giveaways as $index => $giveaway) {
+          if (strlen($giveaway['link']) < 10) continue;
           if ($user->pnts >= $giveaway['pnts'] && $user->lvls >= $giveaway['lvls']) {
             if (self::joinGiveaway($user, $giveaway)) {
               $user->pnts = $user->pnts - $giveaway['pnts'];
@@ -95,7 +97,7 @@
       sleep(rand(3, 8));
 
       if (preg_match('/sidebar__entry-insert\"><i class=\"fa fa-plus-circle\"><\/i> Enter Giveaway/si', $page->data) == 1) {
-        preg_match('/<input type=\"hidden\" name=\"xsrf_token\" value=\"([A-z0-9_-]+)\" \/>/si', $data, $xsrf);
+        preg_match('/<input type=\"hidden\" name=\"xsrf_token\" value=\"([A-z0-9_-]+)\" \/>/si', $page->data, $xsrf);
 
         self::joinRequest($giveaway['link'], $user->sess, $xsrf[1]);
         return true;
@@ -122,7 +124,7 @@
       $fields = array(
         'xsrf_token' => $xsrf,
         'do' => 'entry_insert',
-        'code' => explode('/', $link)[2]
+        'code' => explode('/', trim($link, "/"))[1]
       );
 
       foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
@@ -148,7 +150,7 @@
       }
 
       curl_close ($c);
-      session_start();
+      @session_start();
 
       echo "[L] Joined game (".$link.")\r\n";
     }
