@@ -36,7 +36,7 @@
 
 
   // check if we have a user to execute the whole thing for
-  if ($user_self == NULL) die("[E] No user needs script execution right now!");
+  if ($user_self == NULL) _log("[E] No user needs script execution right now!", true);
   sleep(rand(9, 13));
 
 
@@ -83,7 +83,18 @@
 
 
   // Success notification
-  echo "[L] Successfully joined games for (".$user_self->name.")\r\n";
+  _log("[L] Successfully joined games for (".$user_self->name.")");
 
+
+
+  function _log($message, $die) {
+    $msg = "[".date("d.m H:i:s", time())."]".$message."\r\n";
+
+    if ($die == true) {
+      die($msg);
+    } else {
+      echo $msg;
+    }
+  }
 
 ?>

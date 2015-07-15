@@ -14,14 +14,14 @@
       );
 
       if (self::$db->connect_errno > 0) {
-        die("[E] Connection to database failed (".self::$db->connection_error.")");
+        _log("[E] Connection to database failed (".self::$db->connection_error.")", true);
       }
     }
 
 
     public static function databaseQueryGet($sql) {
       if (!$res = self::$db->query($sql)) {
-        die("[E] Fetching data from database failed (".self::$db->error.")");
+        _log("[E] Fetching data from database failed (".self::$db->error.")", true);
       }
 
       $data = array();
@@ -35,7 +35,7 @@
 
     public static function databaseQuerySet($sql) {
       if (!$res = self::$db->query($sql)) {
-        die("[E] Writing data to database failed (".self::$db->error.")");
+        _log("[E] Writing data to database failed (".self::$db->error.")", true);
       }
     }
 
@@ -48,9 +48,9 @@
           'From: cybrox@cybrox.eu' . "\r\n";
 
       if (mail($target, "GiftFox Win!", $message, $headers)) {
-        echo("[L] Sent win notification to (".$target.")");
+        _log("[L] Sent win notification to (".$target.")");
       } else {
-        die("[E] Failed sending win notification");
+        _log("[E] Failed sending win notification", true);
       }
     }
 
@@ -67,7 +67,6 @@
 
         // Find giveaways on page
         $giveaways = $page->findGiveaways();
-        echo "FOINDSHIT\r\n";
 
         // Loop over giveaways
         foreach ($giveaways as $index => $giveaway) {
@@ -141,18 +140,18 @@
       $data = curl_exec ($c);
 
       if (strlen($data) < 3) {
-        echo "[E] Failed joining game (".$link.")\r\n";
+        _log("[E] Failed joining game (".$link.")");
       } else {
         $data = json_decode($data);
         if ($data->type != "success") {
-          echo "[E] Failed joining game (".$link.")\r\n";
+          _log("[E] Failed joining game (".$link.")");
         }
       }
 
       curl_close ($c);
       @session_start();
 
-      echo "[L] Joined game (".$link.")\r\n";
+      _log("[L] Joined game (".$link.")");
     }
 
 

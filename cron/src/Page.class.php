@@ -44,7 +44,7 @@
       curl_close ($c);
       @session_start();
       
-      echo "[L] Requested page (".$this->link.")\r\n";
+      _log("[L] Requested page (".$this->link.")");
       return $this->data;
     }
 
