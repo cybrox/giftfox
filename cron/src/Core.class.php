@@ -117,12 +117,12 @@
       $headers[] = 'X-Requested-With: XMLHttpRequest';
       $headers[] = 'Referer: http://www.steamgifts.com'.$link;
       $headers[] = 'Origin: http://www.steamgifts.com';
-      $headers[] = 'Cookie: PHPSESSID=2bb806680fab36879eeb2a182c599ba1edd660059177640faa49528334d4f5345eeb82093ed356d4a0172e85aa7aac8a740b01a57d03b587d25d9606c4d8b447;';
+      $headers[] = 'Cookie: PHPSESSID='.$sess.';';
 
       $fields = array(
         'xsrf_token' => $xsrf,
         'do' => 'entry_insert',
-        'code' => explode('/', $link)[1]
+        'code' => explode('/', $link)[2]
       );
 
       foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
@@ -138,7 +138,14 @@
       session_write_close();
       $data = curl_exec ($c);
 
-      if (strlen($data < 3)) echo "[E] Join request failed (".$link.")\r\n";
+      if (strlen($data) < 3) {
+        echo "[E] Failed joining game (".$link.")\r\n";
+      } else {
+        $data = json_decode($data);
+        if ($data->type != "success") {
+          echo "[E] Failed joining game (".$link.")\r\n";
+        }
+      }
 
       curl_close ($c);
       session_start();
