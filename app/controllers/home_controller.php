@@ -34,14 +34,8 @@
                     array("token", "=", Session::get('sess'))
                 ));
 
-                if ($won != 0) {
-                    $user->update(array(
-                        "numwon" => intval($giftswon[1])
-                    ));
-                    Registry::set('numwon', intval($giftswon[1]));
-                } else {
-                    Registry::set('numwon', 0);
-                }
+                $gwon = ($won != 0) ? intval($giftswon[1]) : 0;
+                Registry::set('numwon', $gwon);
 
                 $usermeta = $user->fetch();
                 Registry::set('lastjoin', Session::get('sess'));

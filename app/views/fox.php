@@ -90,7 +90,9 @@
         </div>
         <div class="row justify fox-waiting">
             <div class="col-xs-12">
+                <!--
                 Waiting for: <?php __('userjoin'); ?>...
+                -->
             </div>
         </div>
     </div>
