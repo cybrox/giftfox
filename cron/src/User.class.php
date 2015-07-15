@@ -4,6 +4,7 @@
   
     public $id;                                                           /* the uuid of the user */
     public $name;                                          /* the username of the respective user */
+    public $mail;                                                      /* the users email address */
     public $sess;                                           /* the remote session id of this user */
     public $last;                                        /* the last login timestamp of this user */
     public $wish;                               /* setting to automatically join wishlist entries */
@@ -21,6 +22,7 @@
       $this->name = $user_data['username'];
       $this->last = $user_data['lastjoin'];
       $this->sess = $user_data['sessionid'];
+      $this->mail = $user_data['email'];
 
       $this->wish = $user_data['autowish'] == 1;
       $this->rand = $user_data['autorand'] == 1;
@@ -45,7 +47,8 @@
      * @param $wins - The new number of wins
      */
     public function updateWins($wins) {
-      var_dump($wins);
+      $serialized = implode(';;', $wins);
+      parent::$db->query("UPDATE `gf_user` SET `wins` = '".$serialized."' WHERE `id` = '".$this->id."'");
     }
 
   }

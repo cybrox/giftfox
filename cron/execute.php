@@ -12,6 +12,7 @@
   $user_list = array();
   $user_self = NULL;
   $user_page = NULL;
+  session_start();
 
 
   // connect to mysql database
@@ -33,7 +34,23 @@
     }
   }
 
-  var_dump($user_self);
+
+  // get the page with all the giveaways the user has won
+  $user_page = new Page('giveaways/won', $user_self->sess);
+  $user_wins = $user_page->getUserWins();
+
+  $wins_new = array();
+  foreach ($user_wins as $win) {
+    if (!in_array($win, $user_self->wins)) {
+      array_push($wins_new, $win);
+    }
+  }
+
+  // handle new wins
+  if (count($wins_new) > 0) {
+    $user_self->updateWins(array_filter(array_unique(array_merge($user_wins, $user_self->wins))));
+    Core::sendMail($user_self->mail, $wins_new);
+  }
 
 
 ?>

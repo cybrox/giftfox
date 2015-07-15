@@ -1,6 +1,6 @@
 <?php
 
-  define("BASEURL", "http://steamgifts.com/");
+  define("BASEURL", "http://www.steamgifts.com/");
 
   class Page extends Core {
     
@@ -30,9 +30,19 @@
      */
     private function request($url) {
       $this->link = BASEURL.$url;
-      //...
+
+      $c = curl_init($this->link);
+
+      curl_setopt($c, CURLOPT_VERBOSE, TRUE);
+      curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($c, CURLOPT_COOKIE, 'PHPSESSID='.$this->sess);
+
+      session_write_close();
+      $this->data = curl_exec ($c);
+
+      curl_close ($c);
+      session_start();
       
-      $this->data = file_get_contents('./static/home.html');
       return $this->data;
     }
 
@@ -62,14 +72,14 @@
 
 
     /**
-     * Get the number of won gifts for the user
+     * Get the array of won gifts for the user
      *
-     * @return $wins - The number of gifts won
+     * @return $wins - The array of gifts won
      */
     public function getUserWins() {
-      // preg_match('/.../si', $this->data, $match);
+      preg_match_all('/table__column__heading\" href=\"\/giveaway\/[A-z0-9]+\/[A-z0-9\-]+\">([^<]+)<\/a>/si', $this->data, $match);
 
-      return 1;//intval($match[1]);
+      return $match[1];
     }
   }
 
