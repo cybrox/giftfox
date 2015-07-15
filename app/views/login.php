@@ -28,6 +28,7 @@
 
     var loginProxy = function(e) {
         if (e.which == 13) {
+            $('.login-button').addClass('active');
             login();
         }
     }
