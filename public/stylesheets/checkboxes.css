@@ -1,7 +1,8 @@
 .fancyCheckbox {
   width: 120px;
   height: 40px;
-  background: #333;
+  background: #1b1b1b;
+  box-shadow: inset 1px 1px 1px #191919;
   border-radius: 50px;
   position: relative;
   display: inline-block;
