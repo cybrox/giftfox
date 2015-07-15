@@ -220,6 +220,7 @@ header {
 
         .new-won-count,
         a:hover .new-won-count {
+            font-weight: bold;
             font-size: 1.2em;
             color: #ee3b3b;
         }
