@@ -37,6 +37,7 @@
 
   // check if we have a user to execute the whole thing for
   if ($user_self == NULL) die("[E] No user needs script execution right now!");
+  sleep(rand(9, 13));
 
 
   // get the page with all the giveaways the user has won
@@ -64,19 +65,25 @@
   // auto join wishlist if enabled
   if ($user_self->wish) {
     $user_page = new Page('giveaways/search?type=wishlist', $user_self->sess);
-    Core::joinGiveaways($user_self, $user_page);
+    $user_self = Core::joinGiveaways($user_self, $user_page);
   }
+  sleep(rand(2, 9));
 
 
   // auto join random if enabled
   if ($user_self->rand) {
     $user_page = new Page('/', $user_self->sess);
-    Core::joinGiveaways($user_self, $user_page);
+    $user_self = Core::joinGiveaways($user_self, $user_page);
   }
+  sleep(rand(4, 8));
 
 
   // Update the users last join time
   $user_self->updateLastJoin(time());
+
+
+  // Success notification
+  echo "[L] Successfully joined games for (".$user_self->name.")\r\n";
 
 
 ?>

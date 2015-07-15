@@ -18,6 +18,7 @@
     public function __construct($link, $sess) {
       $this->sess = $sess;
 
+      if (strlen($link) == 0) return NULL;
       return $this->request($link);
     }
 
@@ -33,16 +34,17 @@
 
       $c = curl_init($this->link);
 
+      curl_setopt($c, CURLOPT_HTTPHEADER, parent::getFakeHeaders());
       curl_setopt($c, CURLOPT_VERBOSE, TRUE);
       curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($c, CURLOPT_COOKIE, 'PHPSESSID='.$this->sess);
-
       session_write_close();
       $this->data = curl_exec ($c);
 
       curl_close ($c);
       session_start();
       
+      echo "[L] Requested page (".$this->link.")\r\n";
       return $this->data;
     }
 
@@ -80,6 +82,44 @@
       preg_match_all('/table__column__heading\" href=\"\/giveaway\/[A-z0-9]+\/[A-z0-9\-]+\">([^<]+)<\/a>/si', $this->data, $match);
 
       return $match[1];
+    }
+
+
+    /**
+     * Follow a page pagination
+     *
+     * @return $link - The new page link
+     */
+    public function followPagination() {
+      preg_match('/href=\"([^"]+)\"><span>Next<\/span> <i class=\"fa fa-angle-right/si', $this->data, $match);
+      return (count($match) != 0) ? $match[1] : '';
+    }
+
+
+    /**
+     * Find all giveaways on the page
+     *
+     * @return $giveaways - The array of giveaways
+     */
+    public function findGiveaways() {
+        $giveaways = array();
+        $dataparts = explode("giveaway__summary", $this->data);
+        foreach ($dataparts as $giveaway) {
+          preg_match('/giveaway__heading__name\" href=\"(\/giveaway\/[A-z0-9]+\/[0-9A-z\-_]+)\">([^<]+)<\/a><span class=\"giveaway__heading__thin\">\(([0-9]+)P\)<\/span>/si', $giveaway, $metadata);
+          preg_match('/title=\"Contributor Level\">Level ([0-9]+)\+/si', $giveaway, $triggers);
+
+          if (count($metadata) > 0) {
+            $level = (count($triggers) > 0) ? intval($triggers[1]) : 0;
+            array_push($giveaways, array(
+              "link" => substr($metadata[1], 1),
+              "name" => $metadata[2],
+              "pnts" => $metadata[3],
+              "lvls" => $level 
+            ));
+          }
+        }
+
+        return $giveaways;
     }
   }
 
