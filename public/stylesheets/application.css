@@ -40,7 +40,6 @@ body {
 
 
 header {
-    margin: 10px 25% 30px 25%;
     padding: 10px;
 }
     .page-logo {
@@ -70,9 +69,9 @@ header {
 
 
 #wrapper {
-    width: 50%;
     height: auto;
-    margin: 40px 25% 15px 25%;
+    margin-top: 40px;
+    margin-bottom: 15px;
     padding: 0;
 }
 
@@ -92,6 +91,29 @@ header {
         border-radius: 10px;
         outline: none;
     }
+
+    .login-button {
+        width: 64%;
+        padding: 15px 2%;
+        margin: 10px 18%;
+        background: #1d1d1d;
+        color: #ccc;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        font-size: 1.4em;
+        font-weight: bold;
+        font-family: Sequi, Tahoma, Arial;
+        letter-spacing: 0.4em;
+        transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+        .login-button:hover {
+            color: #E07204;
+            cursor: pointer;
+            box-shadow: inset 1px 1px 2px #151515;
+            transition: box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
 
     .form-error {
         text-align: center;
@@ -205,7 +227,6 @@ header {
 
 
 footer {
-    margin: 25px 25%;
 }
 
     .page-info {

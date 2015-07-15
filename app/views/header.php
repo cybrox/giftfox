@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="col-md-4 col-md-offset-4">
         <h1 class="page-logo">
             <a href="./">
                 <span class="page-logo-nrm">GIFT</span>
@@ -17,4 +17,4 @@
         </h1>
     </header>
 
-    <section id="wrapper">
+    <section id="wrapper" class="col-md-4 col-md-offset-4">
