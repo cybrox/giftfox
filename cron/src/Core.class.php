@@ -54,6 +54,11 @@
       }
     }
 
+
+    public static function joinGiveaways($user, $page) {
+      
+    }
+
   }
 
 ?>

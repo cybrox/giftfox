@@ -35,9 +35,16 @@
   }
 
 
+  // check if we have a user to execute the whole thing for
+  if ($user_self == NULL) die("[E] No user needs script execution right now!");
+
+
   // get the page with all the giveaways the user has won
   $user_page = new Page('giveaways/won', $user_self->sess);
   $user_wins = $user_page->getUserWins();
+
+  $user_self->lvls = $user_page->getUserLevel();
+  $user_self->pnts = $user_page->getUserPoints();
 
   $wins_new = array();
   foreach ($user_wins as $win) {
@@ -46,11 +53,30 @@
     }
   }
 
+
   // handle new wins
   if (count($wins_new) > 0) {
     $user_self->updateWins(array_filter(array_unique(array_merge($user_wins, $user_self->wins))));
     Core::sendMail($user_self->mail, $wins_new);
   }
+
+
+  // auto join wishlist if enabled
+  if ($user_self->wish) {
+    $user_page = new Page('giveaways/search?type=wishlist', $user_self->sess);
+    Core::joinGiveaways($user_self, $user_page);
+  }
+
+
+  // auto join random if enabled
+  if ($user_self->rand) {
+    $user_page = new Page('/', $user_self->sess);
+    Core::joinGiveaways($user_self, $user_page);
+  }
+
+
+  // Update the users last join time
+  $user_self->updateLastJoin(time());
 
 
 ?>

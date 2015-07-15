@@ -11,6 +11,9 @@
     public $rand;                                 /* setting to automatically join random entries */
     public $wins;                                                     /* array with won giveaways */
 
+    public $lvls;                                                           /* scanned user level */
+    public $pnts;                                        /* scanned number of points the user has */
+
 
     /**
      * Create a new instance of the user class
