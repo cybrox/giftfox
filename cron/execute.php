@@ -42,10 +42,6 @@
 
   // get the page with all the giveaways the user has won
   $user_page = new Page('giveaways/won', $user_self->sess);
-  if (strlen($user_page->data < 20)) {
-    die("[E] Ran into user with invalid key (".$user_self->name.")\r\n");
-  }
-
   $user_wins = $user_page->getUserWins();
 
   $user_self->lvls = $user_page->getUserLevel();
