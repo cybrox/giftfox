@@ -85,7 +85,7 @@
         <div class="row">
             <div class="col-xs-6"><span class="fox-title">Last Auto-Join</span></div>
             <div class="col-xs-6"><span class="fox-title">
-                <?php echo date("d.m.Y - H:i", Registry::get('lastjoin')); ?>
+                <?php echo (Registry::get('lastjoin') > 0) ? date("d.m.Y - H:i", Registry::get('lastjoin')) : 'never'; ?>
             </span></div>
         </div>
         <div class="row justify fox-waiting">
