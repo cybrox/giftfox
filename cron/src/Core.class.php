@@ -1,5 +1,7 @@
 <?php
 
+  include('/volume1/web/giftfox/app/config.php');
+  
   class Core {
 
     protected static $db;
@@ -41,7 +43,7 @@
 
 
     public static function sendMail($target, $wins) {
-      $message = file_get_contents('./static/mail.html');
+      $message = file_get_contents($__sphpconfig['absolute_path'].'cron/static/mail.html');
       $message = str_replace("::::", implode("<br />", $wins), $message);
       $headers = 'MIME-Version: 1.0' . "\r\n" .
           'Content-type: text/html; charset=iso-8859-1' . "\r\n" .

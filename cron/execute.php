@@ -1,11 +1,12 @@
 <?php
 
   // request required files
-  include('/volume1/web/giftfox/cron/src/Core.class.php');
-  include('/volume1/web/giftfox/cron/src/User.class.php');
-  include('/volume1/web/giftfox/cron/src/Page.class.php');
-
   include('/volume1/web/giftfox/app/config.php');
+
+  include($__sphpconfig['absolute_path'].'cron/src/Core.class.php');
+  include($__sphpconfig['absolute_path'].'cron/src/User.class.php');
+  include($__sphpconfig['absolute_path'].'cron/src/Page.class.php');
+
 
 
   // prepare global script variables
