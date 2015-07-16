@@ -75,6 +75,16 @@ header {
     padding: 0;
 }
 
+.small-row {
+    width: 64%;
+    margin: 3px 18%;
+}
+
+.large-row {
+    width: 100% !important;
+    margin: 2px 0 !important;
+}
+
     .key-input,
     .login-input {
         font-size: 1.3em;
