@@ -69,7 +69,6 @@
                     "password" => hash('sha256', $password)
                 ));
 
-                Session::set('phps', $sessionid);
                 View::render_json(array("success" => true));
             } else {
                 View::render_json(array("success" => false));

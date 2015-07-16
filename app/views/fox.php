@@ -98,6 +98,7 @@
     </div>
 
     <div class="fox-footer">
+        <a class="fox-logout" href="pwd">Change pw</a>
         <a class="fox-logout" data-query="click(logout)">Logout</a>
         <div class="new-won">
             <a href="http://www.steamgifts.com/giveaways/won" target="_blank">

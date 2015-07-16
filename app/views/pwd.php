@@ -8,7 +8,7 @@
     });
 
     var savepass = function(e) {
-        if (_password() !== _passrept()) {
+        if (_password() !== _passrept() || _password().length < 4) {
             $('.form-error2').removeClass('hidden');
             return;
         } else {
@@ -62,5 +62,5 @@
     <input class="key-input" type="password" placeholder="Repeat password" data-query="val(passrept).keyup(savepassProxy)" />
     <button class="submit-button" data-query="click(savepass).on('touchend', savepass)">submit</button>
     <p class="form-error form-error1 hidden">Something failed!</p>
-    <p class="form-error form-error2 hidden">Passwords didn't match!</p>
+    <p class="form-error form-error2 hidden">Passwords didn't match or are too short!</p>
 </div>
