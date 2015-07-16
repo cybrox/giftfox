@@ -8,8 +8,16 @@
 
 
         public function fox() {
+            $headers = array();
+            $headers[] = 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
+            $headers[] = 'Accept-Language: de,en;q=0.8';
+            $headers[] = 'Cache-Control: max-age=0';
+            $headers[] = 'Host: www.steamgifts.com';
+            $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.81 Safari/537.36';
+
             $c = curl_init('http://www.steamgifts.com/giveaways/entered');
 
+            curl_setopt($c, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($c, CURLOPT_VERBOSE, TRUE);
             curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($c, CURLOPT_COOKIE, 'PHPSESSID='.Session::get('phps'));
@@ -60,6 +68,11 @@
 
         public function key() {
             View::render('key');
+        }
+
+
+        public function pwd() {
+            View::render('pwd');
         }
 
     }
