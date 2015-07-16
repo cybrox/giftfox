@@ -253,6 +253,17 @@ header {
         font-size: 0.8em;
     }
 
+    .very-small {
+        display: block;
+        font-family: Arial;
+        font-style: normal;
+        font-size: 0.6em;
+        text-align: left;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+
     .info-image {
         max-width: 50%;
         border: 2px solid #1b1b1b;
