@@ -34,7 +34,7 @@
     }
 
     var register = function() {
-        alert("Registration is not enabled yet.");
+        alert("Registration is not enabled (yet. If you want in, shoot me a mail (cbrxde@gmail.com) or tweet (@cybroxde).");
     }
 
     var infoPage = function() {

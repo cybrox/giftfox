@@ -5,6 +5,9 @@
 </script>
 
 <div class="key-form">
+    <h3 class="info-message info-large" style="text-align:right;font-size:0.95em;">
+        ( click the logo to get back! )
+    </h3>
     <h3 class="info-message info-large">
         GiftFox is a <a>steamgifts.com</a> bot for the lazy lottery participants among us.
         The bot is using your steamgifts session in order to automatically join available
