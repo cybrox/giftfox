@@ -28,7 +28,7 @@
 
     var loginProxy = function(e) {
         if (e.which == 13) {
-            $('.submit-button').addClass('active');
+            $('.login-button').addClass('active');
             login();
         }
     }
@@ -45,7 +45,7 @@
 <div class="login-form">
     <input class="login-input" type="text" placeholder="username" data-query="val(username).keyup(loginProxy)" />
     <input class="login-input" type="password" placeholder="password" data-query="val(password).keyup(loginProxy)" />
-    <button class="submit-button" data-query="click(login).on('touchend', login)">Login</button>
+    <button class="submit-button login-button" data-query="click(login).on('touchend', login)">Login</button>
     <p class="form-error hidden">Login failed!</p>
 
     <div class="row small-row">

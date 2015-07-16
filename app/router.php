@@ -24,6 +24,7 @@
   Router::route('GET', '/fox', 'home#fox');
   Router::route('GET', '/key', 'home#key');
   Router::route('GET', '/pwd', 'home#pwd');
+  Router::route('GET', '/info', 'home#info');
 
   Router::route_before('GET', '/', function(){ if (Session::has('sess')) Router::redirect('./fox'); });
   Router::route_before('GET', '/fox', function(){ if (!Session::has('sess')) Router::redirect('./'); });

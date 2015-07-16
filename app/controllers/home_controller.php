@@ -75,6 +75,10 @@
             View::render('pwd');
         }
 
+        public function info() {
+            View::render('info');
+        }
+
     }
 
 ?>
