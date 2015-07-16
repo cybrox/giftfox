@@ -37,11 +37,17 @@
         you some information on how to retrieve it. After that, you will be redirected to the
         actual user interface and the bot will do everything on its own from that point on.<br /><br />
         Here's a sneak peak on what the actual bot interface looks like:
+    </h3>
     <h3 class="info-message info-large" style="text-align: center;">
         <img class="info-image" src="/giftfox/public/apppreview.png" alt=""/><br />
     </h3>
     <h3 class="info-message info-large" style="text-align:center;">
         <br /><img src="/giftfox/public/appimage.png" alt=""/><br />
+    </h3>
+    <h3 class="info-message info-large">
+        To increase the efficiency of the bot, please hide giveaways that you can't enter anyways in
+        your <a href="http://www.steamgifts.com/account/settings/giveaways">Giveaway settings</a>.
+        (Set everything to "Yes")
     </h3>
     <h3 class="info-message info-large">
         If you run into any bugs, problems or anything you want to talk about, shoot me a mail to
