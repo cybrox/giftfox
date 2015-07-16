@@ -8,7 +8,7 @@
 
             $user = User::where(array(
                 array("username", "=", $username),
-                array("password", "=", $password)
+                array("password", "=", hash('sha256', $password))
             ));
 
             if ($user->count() == 1) {
@@ -50,6 +50,23 @@
 
                 $user->update(array(
                     "sessionid" => $sessionid
+                ));
+
+                Session::set('phps', $sessionid);
+                View::render_json(array("success" => true));
+            } else {
+                View::render_json(array("success" => false));
+            }
+        }
+
+
+        public function newpwd() {
+            if (Session::has('sess')) {
+                $password = (Parameters::has('password')) ? Parameters::get('password') : '';
+                $user = User::where(array(array("token", "=", Session::get('sess'))));
+
+                $user->update(array(
+                    "password" => hash('sha256', $password)
                 ));
 
                 Session::set('phps', $sessionid);

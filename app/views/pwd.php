@@ -1,12 +1,14 @@
 <script type="text/javascript">
-    var _sesskey = blocks.observable("");
+    var _password = blocks.observable("");
+    var _passrept = blocks.observable("");
 
     blocks.query({
-        sesskey: _sesskey,
+        password: _password,
+        passrept: _passrept
     });
 
-    var savekey = function(e) {
-        if (_sesskey().length < 20) {
+    var savepass = function(e) {
+        if (_password() !== _passrept()) {
             $('.form-error2').removeClass('hidden');
             return;
         } else {
@@ -16,9 +18,9 @@
 
         $.ajax({
             method: "POST",
-            url: "user/updatekey/",
+            url: "user/updatepass/",
             data: {
-                sesskey: _sesskey(),
+                password: _password(),
             },
 
             success: function (payload) {
@@ -31,9 +33,9 @@
         });
     }
 
-    var savekeyProxy = function(e) {
+    var savepassProxy = function(e) {
         if (e.which == 13) {
-            savekey();
+            savepass();
         }
     }
 
@@ -53,12 +55,12 @@
 
 <div class="key-form">
     <h3 class="info-message">
-        <a>steamgifts.com</a> session has expired!
-        Copy new session key
-        (<a data-query="click(logout)">Logout</a>)
+        Changing your Account password...
+        (or <a data-query="click(logout)">Logout</a>)
     </h3>
-    <input class="key-input" type="text" placeholder="sessionkey" data-query="val(sesskey).keyup(savekeyProxy)" />
-    <button class="submit-button" data-query="click(savekey).on('touchend', savekey)">submit</button>
+    <input class="key-input" type="password" placeholder="New password" data-query="val(password).keyup(savepassProxy)" />
+    <input class="key-input" type="password" placeholder="Repeat password" data-query="val(passrept).keyup(savepassProxy)" />
+    <button class="submit-button" data-query="click(savepass).on('touchend', savepass)">submit</button>
     <p class="form-error form-error1 hidden">Something failed!</p>
-    <p class="form-error form-error2 hidden">Key too short!</p>
+    <p class="form-error form-error2 hidden">Passwords didn't match!</p>
 </div>

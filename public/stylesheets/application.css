@@ -92,7 +92,7 @@ header {
         outline: none;
     }
 
-    .login-button {
+    .submit-button {
         width: 64%;
         padding: 15px 2%;
         margin: 10px 18%;
@@ -108,8 +108,8 @@ header {
         transition: box-shadow 0.08s ease-in-out, color 0.08s ease-in-out;
     }
 
-        .login-button:hover,
-        .login-button.active {
+        .submit-button:hover,
+        .submit-button.active {
             color: #E07204;
             cursor: pointer;
             box-shadow: inset 1px 1px 2px #151515;

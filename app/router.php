@@ -23,15 +23,18 @@
   Router::route('GET', '/', 'home#login');
   Router::route('GET', '/fox', 'home#fox');
   Router::route('GET', '/key', 'home#key');
+  Router::route('GET', '/pwd', 'home#pwd');
 
   Router::route_before('GET', '/', function(){ if (Session::has('sess')) Router::redirect('./fox'); });
   Router::route_before('GET', '/fox', function(){ if (!Session::has('sess')) Router::redirect('./'); });
   Router::route_before('GET', '/key', function(){ if (!Session::has('sess')) Router::redirect('./'); });
+  Router::route_before('GET', '/pwd', function(){ if (!Session::has('sess')) Router::redirect('./'); });
 
 
   Router::route('POST', '/user/login', 'user#login');
   Router::route('POST', '/user/logout', 'user#logout');
   Router::route('POST', '/user/updatekey', 'user#newkey');
+  Router::route('POST', '/user/updatepass', 'user#newpwd');
   Router::route('POST', '/user/updateval', 'user#setting');
 
 
