@@ -3,6 +3,9 @@
     <?php Autoloader::load_vendor(); ?>
     <?php Autoloader::load_public(); ?>
 
+    <link href="favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
     <title>Giftfox</title>
 
 </head>
