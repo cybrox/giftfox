@@ -3,3 +3,6 @@ cron/static/example*
 
 # Ignore generated log file
 cron/execute.log
+
+# Ignore windows generated files
+Thumbs.db
