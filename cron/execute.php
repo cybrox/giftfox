@@ -83,7 +83,7 @@
 
 
   // Success notification
-  _log("[L] Successfully joined games for (".$user_self->name.")");
+  _log("[L] Successfully joined games for (".$user_self->name.")", false);
 
 
 

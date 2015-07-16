@@ -48,7 +48,7 @@
           'From: cybrox@cybrox.eu' . "\r\n";
 
       if (mail($target, "GiftFox Win!", $message, $headers)) {
-        _log("[L] Sent win notification to (".$target.")");
+        _log("[L] Sent win notification to (".$target.")", false);
       } else {
         _log("[E] Failed sending win notification", true);
       }
@@ -140,18 +140,18 @@
       $data = curl_exec ($c);
 
       if (strlen($data) < 3) {
-        _log("[E] Failed joining game (".$link.")");
+        _log("[E] Failed joining game (".$link.")", false);
       } else {
         $data = json_decode($data);
         if ($data->type != "success") {
-          _log("[E] Failed joining game (".$link.")");
+          _log("[E] Failed joining game (".$link.")", false);
         }
       }
 
       curl_close ($c);
       @session_start();
 
-      _log("[L] Joined game (".$link.")");
+      _log("[L] Joined game (".$link.")", false);
     }
 
 

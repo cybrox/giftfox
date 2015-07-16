@@ -44,7 +44,7 @@
       curl_close ($c);
       @session_start();
       
-      _log("[L] Requested page (".$this->link.")");
+      _log("[L] Requested page (".$this->link.")", false);
       return $this->data;
     }
 
