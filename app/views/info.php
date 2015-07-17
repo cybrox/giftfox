@@ -11,7 +11,7 @@
     <h3 class="info-message info-large">
         GiftFox is a <a>steamgifts.com</a> bot for the lazy lottery participants among us.
         The bot is using your steamgifts session in order to automatically join available
-        giveaways for you, based on your settings and notify you via e-mail once you win
+        giveaways for you based on your settings and notify you via e-mail once you win
         something.
     </h3>
     <h3 class="info-message info-large" style="text-align:center;">
