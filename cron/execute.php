@@ -26,10 +26,10 @@
 
 
   // get random user to execute task for
-  $fix_time = rand(21600, 43200);
+  $fix_time = rand(10800, 21600);
 
   foreach ($user_list as $user) {
-    if ($user->last <= $fix_time && strlen($user->sess) > 5) {
+    if ($user->last <= (time() - $fix_time) && strlen($user->sess) > 5) {
       $user_self = $user;
       break;
     }
