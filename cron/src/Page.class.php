@@ -30,7 +30,7 @@
      * @return $this - Instance of page class
      */
     private function request($url) {
-      $this->link = BASEURL.$url;
+      $this->link = str_replace('//', '/', BASEURL.$url);
 
       $c = curl_init($this->link);
 
