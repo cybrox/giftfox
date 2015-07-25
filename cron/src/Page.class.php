@@ -1,6 +1,6 @@
 <?php
 
-  define("BASEURL", "http://www.steamgifts.com/");
+  define("BASEURL", "www.steamgifts.com/");
 
   class Page extends Core {
     
@@ -30,20 +30,28 @@
      * @return $this - Instance of page class
      */
     private function request($url) {
-      $this->link = str_replace('//', '/', BASEURL.$url);
+      $this->link = 'http://'.str_replace('//', '/', BASEURL.$url);
 
-      $c = curl_init($this->link);
+      try {
+        $c = curl_init($this->link);
 
-      curl_setopt($c, CURLOPT_HTTPHEADER, parent::getFakeHeaders());
-      curl_setopt($c, CURLOPT_VERBOSE, TRUE);
-      curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($c, CURLOPT_COOKIE, 'PHPSESSID='.$this->sess);
-      session_write_close();
-      $this->data = curl_exec ($c);
+        curl_setopt($c, CURLOPT_HTTPHEADER, parent::getFakeHeaders());
+        curl_setopt($c, CURLOPT_VERBOSE, TRUE);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($c, CURLOPT_COOKIE, 'PHPSESSID='.$this->sess);
+        session_write_close();
+        $this->data = curl_exec ($c);
 
-      curl_close ($c);
-      @session_start();
-      
+        if ($this->data == false) {
+          die("[E] cURL failed (".(curl_errno($c))." - ".(curl_error($c)).")");
+        }
+
+        curl_close ($c);
+        @session_start();
+      } catch (Exception $e) {
+        die("[E] cURL failed (".($e->getCode())." - ".($e->getMessage()).")");
+      }
+
       _log("[L] Requested page (".$this->link.")", false);
       return $this->data;
     }
